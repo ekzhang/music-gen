@@ -82,12 +82,20 @@ class MusicRNN {
 }
 
 async function main() {
-  const message = document.getElementById('message');
   var rnn = new MusicRNN();
+  const btn = document.getElementById('compose');
+  const message = document.getElementById('message');
+
+  btn.onclick = async function() {
+    await rnn.ready;
+    message.innerHTML = 'Loading...';
+    const song = await rnn.sample(1024);
+    // console.log(song);
+    display(song);
+    message.innerHTML = '';
+  }
+
   await rnn.ready;
-  const song = await rnn.sample(1024);
-  console.log(song);
-  display(song);
   message.innerHTML = '';
 }
 

@@ -23,15 +23,15 @@
   <!-- Midi Player Stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/paulrosen/abcjs/v3.2.1/abcjs-midi.css" />
 
-  <style>
-    text.meta-bottom {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-  <h2 id="message">Loading...</h2>
+  <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    Compose a Jig
+  </button>
+
+  <h2 id="message">Loading model...</h2>
   <div id="sheet-music"></div>
   <div id="midi-music"></div>
 
