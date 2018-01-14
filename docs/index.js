@@ -40,6 +40,7 @@ class MusicRNN {
       for (let i = 0; i < 64; i++) {
         await this._sampleNext();
       }
+      await this.sample();
     });
   }
 
@@ -68,11 +69,13 @@ class MusicRNN {
     return ret;
   }
 
-  async sample(chars) {
-    await this.ready;
+  async sample() {
     var ret = [];
-    for (let i = 0; i < chars; i++) {
+    while (true) {
       ret.push(this.idxToChar[await this._sampleNext()]);
+      if (ret.slice(-3).join('') === '\n\n\n') {
+        break;
+      }
     }
     return ret.join('');
   }
