@@ -29,11 +29,27 @@ const model = new KerasJS.Model({
   filepath: '/model/model.100.bin',
   headers: {},
   filesystem: false,
-  gpu: false,
+  gpu: true,
   transferLayerOutputs: false,
   pauseAfterLayerCalls: false,
   visualizations: []
 });
+
+function weightedRandom(prob) {
+  var total = 0;
+  for (let p of prob) {
+    total += p;
+  }
+  const r = total * Math.random();
+  var cur = 0;
+  for (let i = 0; i < prob.length; i++) {
+    cur += prob[i];
+    if (cur > r) {
+      return i;
+    }
+  }
+  return -1;
+}
 
 async function sample() {
   const char_to_idx = JSON.parse(await get('model/char_to_idx.json'));
@@ -45,27 +61,6 @@ async function sample() {
   }
 
   await model.ready();
-
-  /* Ported from python source
-
-    sampled = [char_to_idx[c] for c in header]
-    for c in header[:-1]:
-        batch = np.zeros((1, 1))
-        batch[0, 0] = char_to_idx[c]
-        model.predict_on_batch(batch)
-
-    for i in range(num_chars):
-        batch = np.zeros((1, 1))
-        if sampled:
-            batch[0, 0] = sampled[-1]
-        else:
-            batch[0, 0] = np.random.randint(vocab_size)
-        result = model.predict_on_batch(batch).ravel()
-        sample = np.random.choice(range(vocab_size), p=result)
-        sampled.append(sample)
-
-    return ''.join(idx_to_char[c] for c in sampled)
-  */
 
   sampled = [];
 
@@ -80,8 +75,13 @@ async function sample() {
     const outputData = await model.predict({ input });
     const output = outputData.output;
 
-    console.log(output);
+    sampled.push(weightedRandom(output));
   }
+  return sampled.map(idx => idx_to_char[idx]).join('');
 }
 
-sample();
+async function main() {
+  console.log(await sample());
+}
+
+main();
