@@ -9,3 +9,5 @@ K:A
 "D"d2A Bcd|"G"efg "A7"edc|"Em"Bee "A7"cBA|"D"A2c d2:|`
 
 ABCJS.renderAbc('sheet-music', s);
+ABCJS.midi.soundfontUrl = "https://gleitz.github.io/midi-js-soundfonts/FluidR3_GM/";
+ABCJS.renderMidi('midi-music', s);
