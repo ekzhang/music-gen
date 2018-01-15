@@ -47,6 +47,11 @@
     <h6><a href="https://github.com/ekzhang">Eric Zhang</a>, 2018.</a></h6>
   </div>
 
+  <!-- Fix for Safari -->
+  <script type="text/javascript">
+    window.AudioContext = window.AudioContext || webkitAudioContext;
+  </script>
+
   <!-- abcjs -->
   <script src="https://cdn.rawgit.com/paulrosen/abcjs/v3.2.1/bin/abcjs_basic_latest-min.js"></script>
 
