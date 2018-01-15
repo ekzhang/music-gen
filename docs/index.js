@@ -6,7 +6,7 @@ const container = document.getElementById('loading-container');
 
 function display(song) {
   ABCJS.renderAbc('sheet-music', song);
-  ABCJS.renderMidi('midi-music', song);
+  ABCJS.renderMidi('midi-music', song, {}, {qpm: 120});
 }
 
 function displayClear() {
