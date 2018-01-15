@@ -32,7 +32,7 @@ class MusicRNN {
       this.sampled = [Math.floor(Math.random() * this.vocabSize)];
     }).then(async () => {
       // Give model time to warm up
-      for (let i = 0; i < 64; i++) {
+      for (let i = 0; i < 128; i++) {
         await this._sampleNext();
       }
       await this.sample();
