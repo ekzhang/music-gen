@@ -1,7 +1,7 @@
 music-gen
 =========
 
-[Try it now](https://github.com/ekzhang/music-gen)
+[Try it now](https://ekzhang.github.io/music-gen/)
 
 Generate and play music with a recurrent neural network running in the browser.
 
