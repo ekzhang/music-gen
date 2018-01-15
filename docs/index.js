@@ -86,17 +86,19 @@ async function main() {
   const btn = document.getElementById('compose');
   const message = document.getElementById('message');
 
-  btn.onclick = async function() {
-    await rnn.ready;
-    message.innerHTML = 'Loading...';
-    const song = await rnn.sample(1024);
-    // console.log(song);
-    display(song);
-    message.innerHTML = '';
-  }
-
   await rnn.ready;
   message.innerHTML = '';
+
+  btn.onclick = async function () {
+    btn.disabled = true;
+    message.innerHTML = 'Loading...';
+
+    const song = await rnn.sample(1024);
+    display(song);
+
+    message.innerHTML = '';
+    btn.disabled = false;
+  }
 }
 
 main();
