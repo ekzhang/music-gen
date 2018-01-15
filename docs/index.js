@@ -37,6 +37,7 @@ function process(abc) {
   return lines.join('\n');
 }
 
+  var gpu = false;
 async function main() {
   const worker = new Worker('worker.js');
   showLoading('Loading model...');
@@ -56,10 +57,14 @@ async function main() {
     }
   }
 
-  btn.onclick = async function () {
+  btn.onclick = function() {
     displayClear();
     showLoading('Composing...');
     worker.postMessage({ type: 'sample' });
+  }
+
+  document.getElementById('toggle-gpu').onclick = function() {
+    worker.postMessage({ type: 'toggle-gpu' });
   }
 }
 

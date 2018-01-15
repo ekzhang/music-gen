@@ -21,6 +21,7 @@ class MusicRNN {
       pauseAfterLayerCalls: false,
       visualizations: []
     });
+    this.gpu = false;
     this.ready = Promise.all([this.model.ready(), get('model/char_to_idx.json')]).then(result => {
       this.charToIdx = JSON.parse(result[1]);
       this.idxToChar = {};
@@ -74,6 +75,11 @@ class MusicRNN {
     }
     return ret.join('');
   }
+
+  toggleGPU() {
+    this.gpu = !this.gpu;
+    this.model.toggleGPU(this.gpu);
+  }
 }
 
 const rnn = new MusicRNN();
@@ -83,6 +89,11 @@ rnn.ready.then(() => {
 
 this.onmessage = async function(e) {
   await rnn.ready;
-  const abc = await rnn.sample();
-  postMessage({ type: 'song', payload: abc });
+  if (e.data.type === 'sample') {
+    const abc = await rnn.sample();
+    postMessage({ type: 'song', payload: abc });
+  }
+  else if (e.data.type === 'toggle-gpu') {
+    rnn.toggleGPU();
+  }
 }
