@@ -21,15 +21,21 @@
 </head>
 
 <body>
-  <h1>music-gen</h1>
-  <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-    Compose a Jig
-  </button>
+  <div class="container">
+    <h1>music-gen</h1>
+    <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Compose a Jig
+    </button>
 
-  <h4 id="message">Loading model...</h4>
-  <div class="output-container">
-    <div id="sheet-music"></div>
-    <div id="midi-music"></div>
+    <div id="loading-container" style="display: none">
+      <h4 id="loading-message"></h4>
+      <div id="loading-bar" class="mdl-progress mdl-js-progress mdl-progress--indeterminate"></div>
+    </div>
+
+    <div class="output-container">
+      <div id="sheet-music"></div>
+      <div id="midi-music"></div>
+    </div>
   </div>
 
   <!-- abcjs -->

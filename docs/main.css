@@ -3,7 +3,13 @@ html>body {
   text-align: center;
 }
 
-.output-container {
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loading-bar {
   display: inline-block;
 }
 
