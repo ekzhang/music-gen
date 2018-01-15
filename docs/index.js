@@ -26,6 +26,17 @@ function clearLoading() {
   container.style.display = 'none';
 }
 
+function process(abc) {
+  // Remove nonstandard Y: information fields
+  var lines = abc.split('\n');
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (lines[i].startsWith('Y:')) {
+      lines.splice(i, 1);
+    }
+  }
+  return lines.join('\n');
+}
+
 async function main() {
   const worker = new Worker('worker.js');
   showLoading('Loading model...');
@@ -36,7 +47,8 @@ async function main() {
       clearLoading();
     }
     else if (d.type === 'song') {
-      display(d.payload);
+      const song = process(d.payload);
+      display(song);
       clearLoading();
     }
     else {
