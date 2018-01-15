@@ -21,30 +21,51 @@
 </head>
 
 <body>
-  <a href="https://github.com/ekzhang/music-gen">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-      alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
-  </a>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--primary mdl-layout__header--scroll">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">music-gen</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
 
-  <div class="container">
-    <h1>music-gen</h1>
-    <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
-      Compose a Jig
-    </button>
+        <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">more_vert</i>
+        </button>
 
-    <div id="loading-container" style="display: none">
-      <h4 id="loading-message"></h4>
-      <div id="loading-bar" class="mdl-progress mdl-js-progress mdl-progress--indeterminate"></div>
-    </div>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+          <li class="mdl-menu__item">Some Action</li>
+          <li class="mdl-menu__item">Another Action</li>
+          <li disabled class="mdl-menu__item">Disabled Action</li>
+          <li class="mdl-menu__item">Yet Another Action</li>
+        </ul>
+      </div>
+    </header>
 
-    <div class="output-container">
-      <div id="sheet-music"></div>
-      <div id="midi-music"></div>
-    </div>
+    <main class="mdl-layout__content">
+      <div class="container">
+        <h1>music-gen</h1>
+        <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+          Compose a Jig
+        </button>
 
-    <hr>
+        <div id="loading-container" style="display: none">
+          <h4 id="loading-message"></h4>
+          <div id="loading-bar" class="mdl-progress mdl-js-progress mdl-progress--indeterminate"></div>
+        </div>
 
-    <h6><a href="https://github.com/ekzhang">Eric Zhang</a>, 2018.</a></h6>
+        <div class="output-container">
+          <div id="sheet-music"></div>
+          <div id="midi-music"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="mdl-mini-footer">
+      <ul class="mdl-mini-footer__link-list">
+        <li>Created by <a class="mdl-color-text--grey-600" href="https://github.com/ekzhang">Eric Zhang</a>.</li>
+      </ul>
+    </footer>
   </div>
 
   <!-- Fix for Safari -->

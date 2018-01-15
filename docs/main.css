@@ -3,6 +3,10 @@ html>body {
   text-align: center;
 }
 
+main {
+  padding-bottom: 100px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -15,6 +19,10 @@ html>body {
 
 text.meta-bottom {
   display: none;
+}
+
+footer.mdl-mini-footer {
+  justify-content: center;
 }
 
 /* Midi player styles */
