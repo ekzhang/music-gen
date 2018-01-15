@@ -1,5 +1,10 @@
 html>body {
   background: #fafafa;
+  text-align: center;
+}
+
+.output-container {
+  display: inline-block;
 }
 
 text.meta-bottom {

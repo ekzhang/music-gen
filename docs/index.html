@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Jig Composer</title>
+  <title>music-gen</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Generate and play music with a recurrent neural network running in the browser.">
@@ -21,19 +21,19 @@
 </head>
 
 <body>
+  <h1>music-gen</h1>
   <button id="compose" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
     Compose a Jig
   </button>
 
-  <h2 id="message">Loading model...</h2>
-  <div id="sheet-music"></div>
-  <div id="midi-music"></div>
+  <h4 id="message">Loading model...</h4>
+  <div class="output-container">
+    <div id="sheet-music"></div>
+    <div id="midi-music"></div>
+  </div>
 
   <!-- abcjs -->
   <script src="https://cdn.rawgit.com/paulrosen/abcjs/v3.2.1/bin/abcjs_basic_latest-min.js"></script>
-
-  <!-- keras.js -->
-  <script src="https://unpkg.com/keras-js"></script>
 
   <!-- Main javascript file -->
   <script src="index.js"></script>
