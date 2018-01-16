@@ -7,6 +7,9 @@ const container = document.getElementById('loading-container');
 function display(song) {
   ABCJS.renderAbc('sheet-music', song);
   ABCJS.renderMidi('midi-music', song, {}, {qpm: 120});
+  document.getElementById('download').onclick = function() {
+    download('song.txt', song);
+  }
 }
 
 function displayClear() {
@@ -37,7 +40,16 @@ function process(abc) {
   return lines.join('\n');
 }
 
-  var gpu = false;
+function download(name, contents) {
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(contents));
+  element.setAttribute('download', name);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
 async function main() {
   const worker = new Worker('worker.js');
   showLoading('Loading model...');
