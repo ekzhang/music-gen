@@ -56,6 +56,7 @@
         <div class="output-container">
           <div id="sheet-music"></div>
           <div id="midi-music"></div>
+          <div id="player"></div>
         </div>
       </div>
     </main>
@@ -72,8 +73,18 @@
     window.AudioContext = window.AudioContext || webkitAudioContext;
   </script>
 
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
   <!-- abcjs -->
   <script src="https://cdn.rawgit.com/paulrosen/abcjs/v3.2.1/bin/abcjs_basic_latest-min.js"></script>
+
+  <!-- abc2midi -->
+  <script src="abc2midi.min.js"></script>
+
+  <!-- wildwebmidi -->
+  <script type="text/javascript" src="wildwebmidi.js"></script>
+  <script type="text/javascript" src="midiplayer.js"></script>
 
   <!-- Main javascript file -->
   <script src="index.js"></script>

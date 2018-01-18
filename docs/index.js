@@ -50,6 +50,22 @@ function download(name, contents) {
   document.body.removeChild(element);
 }
 
+function getmidi(abc) {
+  var midi = abc2midi(abc + ' -Q 280');
+  var b64encoded = btoa(String.fromCharCode.apply(null, midi));
+  return "data:audio/midi;base64," + b64encoded;
+}
+
+function playMidi(midi) {
+  $('#player').empty();
+  $('#player').midiPlayer({
+    color: 'red',
+    onStop: () => playMidi(midi),
+    width: 250
+  });
+  $('#player').midiPlayer.play(midi);
+}
+
 async function main() {
   const worker = new Worker('worker.js');
   showLoading('Loading model...');
@@ -63,6 +79,8 @@ async function main() {
       const song = process(d.payload);
       display(song);
       clearLoading();
+      const midi = getmidi(song);
+      playMidi(midi);
     }
     else {
       console.error('Invalid message from worker: ' + d);
