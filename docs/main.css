@@ -1,4 +1,4 @@
-html>body {
+html > body {
   background: #fafafa;
   text-align: center;
 }
@@ -17,8 +17,9 @@ main {
   display: inline-block;
 }
 
-text.meta-bottom {
-  display: none;
+svg > text:last-child {
+  /* Hide meaningless "Source" line */
+  visibility: hidden;
 }
 
 footer.mdl-mini-footer {

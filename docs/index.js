@@ -1,15 +1,13 @@
-ABCJS.midi.soundfontUrl = "https://gleitz.github.io/midi-js-soundfonts/MusyngKite/";
-
 const btn = document.getElementById('compose');
 const message = document.getElementById('loading-message');
 const container = document.getElementById('loading-container');
 
 function display(song) {
   ABCJS.renderAbc('sheet-music', song);
-  ABCJS.renderMidi('midi-music', song, {}, {qpm: 120});
+  ABCJS.renderMidi('midi-music', song, { qpm: 180 });
   document.getElementById('download').onclick = function() {
-    download('song.txt', song);
-  }
+    download('song.abc', song);
+  };
 }
 
 function displayClear() {
