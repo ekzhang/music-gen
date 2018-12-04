@@ -22,6 +22,10 @@ svg > text:last-child {
   visibility: hidden;
 }
 
+.abcjs-download-midi {
+  margin-top: 26px;
+}
+
 footer.mdl-mini-footer {
   justify-content: center;
 }

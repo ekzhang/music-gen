@@ -4,7 +4,7 @@ const container = document.getElementById('loading-container');
 
 function display(song) {
   ABCJS.renderAbc('sheet-music', song);
-  ABCJS.renderMidi('midi-music', song, { qpm: 180 });
+  ABCJS.renderMidi('midi-music', song, { qpm: 180, generateDownload: true });
   document.getElementById('download').onclick = function() {
     download('song.abc', song);
   };
