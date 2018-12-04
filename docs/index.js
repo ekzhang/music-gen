@@ -3,6 +3,7 @@ const message = document.getElementById('loading-message');
 const container = document.getElementById('loading-container');
 
 function display(song) {
+  document.getElementById('sheet-music').style.visibility = 'visible';
   ABCJS.renderAbc('sheet-music', song);
   ABCJS.renderMidi('midi-music', song, { qpm: 180, generateDownload: true });
   document.getElementById('download').onclick = function() {
@@ -11,6 +12,7 @@ function display(song) {
 }
 
 function displayClear() {
+  document.getElementById('sheet-music').style.visibility = 'hidden';
   document.getElementById('sheet-music').innerHTML = '';
   document.getElementById('midi-music').innerHTML = '';
 }

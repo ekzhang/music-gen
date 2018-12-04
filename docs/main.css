@@ -17,6 +17,14 @@ main {
   display: inline-block;
 }
 
+#sheet-music {
+  visibility: hidden;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 30px;
+  background: white;
+}
+
 svg > text:last-child {
   /* Hide meaningless "Source" line */
   visibility: hidden;
