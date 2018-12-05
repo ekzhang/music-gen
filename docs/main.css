@@ -3,8 +3,8 @@ html > body {
   text-align: center;
 }
 
-main {
-  padding-bottom: 100px;
+header.mdl-layout__header .mdl-button {
+  color: white;
 }
 
 .container {
@@ -20,7 +20,6 @@ main {
 #sheet-music {
   visibility: hidden;
   border: 1px solid black;
-  border-radius: 20px;
   margin: 30px;
   background: white;
 }
@@ -31,10 +30,11 @@ svg > text:last-child {
 }
 
 .abcjs-download-midi {
-  margin-top: 26px;
+  margin: 26px;
 }
 
 footer.mdl-mini-footer {
+  flex-shrink: 0;
   justify-content: center;
 }
 

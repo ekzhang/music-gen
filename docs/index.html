@@ -25,19 +25,15 @@
     <header class="mdl-layout__header mdl-layout__header--primary mdl-layout__header--scroll">
       <div class="mdl-layout__header-row">
         <!-- Title -->
-        <span class="mdl-layout-title">RNN Composer</span>
+        <span class="mdl-layout-title">Recurrent Neural Network for Music Composition</span>
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
 
-        <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
-          <i class="material-icons">more_vert</i>
-        </button>
-
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-          <li class="mdl-menu__item" id="download">Download</li>
-          <li class="mdl-menu__item" id="toggle-gpu">Toggle GPU</li>
-          <li class="mdl-menu__item" onclick="window.location='https://github.com/ekzhang/music-gen'">View on Github</li>
-        </ul>
+        <nav class="mdl-navigation">
+          <button class="mdl-button mdl-js-button mdl-button--light" id="download">Download ABC Format</button>
+          <button class="mdl-button mdl-js-button mdl-button--light" id="toggle-gpu">Toggle GPU</button>
+          <button class="mdl-button mdl-js-button mdl-button--light" onclick="window.location='https://github.com/ekzhang/music-gen'">View on Github</button>
+        </nav>
       </div>
     </header>
 
@@ -54,7 +50,7 @@
         </div>
 
         <div class="output-container">
-          <div id="sheet-music"></div>
+          <div id="sheet-music" class="mdl-shadow--3dp"></div>
           <div id="midi-music"></div>
         </div>
       </div>
