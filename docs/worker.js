@@ -13,7 +13,7 @@ function get(url) {
 class MusicRNN {
   constructor() {
     this.model = new KerasJS.Model({
-      filepath: 'model/model.100.bin',
+      filepath: 'model/music-rnn-dropout.bin',
       headers: {},
       filesystem: false,
       gpu: false,
