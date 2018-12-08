@@ -2,10 +2,27 @@ const btn = document.getElementById('compose');
 const message = document.getElementById('loading-message');
 const container = document.getElementById('loading-container');
 
+function colorRange(range, color) {
+  if (range && range.elements) {
+    for (const set of range.elements)
+      for (const item of set)
+        item.setAttribute('fill', color);
+  }
+}
+
 function display(song) {
   document.getElementById('sheet-music').style.visibility = 'visible';
-  ABCJS.renderAbc('sheet-music', song);
-  ABCJS.renderMidi('midi-music', song, { qpm: 180, generateDownload: true });
+  const tunes = ABCJS.renderAbc('sheet-music', song);
+  ABCJS.renderMidi('midi-music', song, {
+    generateDownload: true,
+    animate: {
+      listener: function(lastRange, currentRange, context) {
+        colorRange(lastRange, '#000000');
+        colorRange(currentRange, '#3D9AFC');
+      },
+      target: tunes[0]
+    }
+  });
   document.getElementById('download').onclick = function() {
     download('song.abc', song);
   };
