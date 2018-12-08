@@ -29,8 +29,8 @@
         <div class="mdl-layout-spacer"></div>
 
         <nav class="mdl-navigation">
-          <button class="mdl-button mdl-js-button mdl-button--light" id="download">Save Song</button>
-          <button class="mdl-button mdl-js-button mdl-button--light" id="toggle-gpu">Toggle GPU</button>
+          <button class="mdl-button mdl-js-button mdl-button--light" id="download-abc">Save Song</button>
+          <button class="mdl-button mdl-js-button mdl-button--light" id="download-midi">Download MIDI</button>
           <button class="mdl-button mdl-js-button mdl-button--light" onclick="window.location='https://github.com/ekzhang/music-gen'">View on Github</button>
         </nav>
       </div>
@@ -69,6 +69,9 @@
 
   <!-- abcjs -->
   <script src="https://cdn.jsdelivr.net/gh/paulrosen/abcjs@v5.4.2/bin/abcjs_midi_5.4.2-min.js"></script>
+
+  <!-- abc2midi -->
+  <script src="https://cdn.jsdelivr.net/gh/skooter500/abc2midi-js@dc2fdc0/abc2midi.js"></script>
 
   <!-- Main javascript file -->
   <script src="index.js"></script>

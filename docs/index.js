@@ -14,7 +14,7 @@ function display(song) {
   document.getElementById('sheet-music').style.visibility = 'visible';
   const tunes = ABCJS.renderAbc('sheet-music', song);
   ABCJS.renderMidi('midi-music', song, {
-    generateDownload: true,
+    generateDownload: false,
     animate: {
       listener: function(lastRange, currentRange, context) {
         colorRange(lastRange, '#000000');
@@ -23,8 +23,11 @@ function display(song) {
       target: tunes[0]
     }
   });
-  document.getElementById('download').onclick = function() {
+  document.getElementById('download-abc').onclick = function() {
     download('song.abc', song);
+  };
+  document.getElementById('download-midi').onclick = function() {
+    download('song.mid', getMidi(song), true);
   };
 }
 
@@ -57,14 +60,21 @@ function process(abc) {
   return lines.join('\n');
 }
 
-function download(name, contents) {
+function download(name, contents, raw) {
   const element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(contents));
+  const href = raw ? contents : 'data:text/plain;charset=utf-8,' + encodeURIComponent(contents);
+  element.setAttribute('href', href);
   element.setAttribute('download', name);
   element.style.display = 'none';
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
+}
+
+function getMidi(abc) {
+  var midi = abc2midi(abc);
+  var b64encoded = btoa(String.fromCharCode.apply(null, midi));
+  return "data:audio/midi;base64," + b64encoded;
 }
 
 async function main() {
@@ -90,10 +100,6 @@ async function main() {
     displayClear();
     showLoading('Composing...');
     worker.postMessage({ type: 'sample' });
-  }
-
-  document.getElementById('toggle-gpu').onclick = function() {
-    worker.postMessage({ type: 'toggle-gpu' });
   }
 }
 

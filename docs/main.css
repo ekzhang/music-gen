@@ -8,6 +8,7 @@ header.mdl-layout__header .mdl-button {
 }
 
 .container {
+  margin: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,10 +28,6 @@ header.mdl-layout__header .mdl-button {
 svg > text:last-child {
   /* Hide meaningless "Source" line */
   visibility: hidden;
-}
-
-.abcjs-download-midi {
-  margin: 26px;
 }
 
 footer.mdl-mini-footer {
